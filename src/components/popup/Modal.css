@@ -1,0 +1,105 @@
+/* === 폰트 로딩 (public/fonts 에 TTF 파일이 있어야 합니다) === */
+@font-face {
+  font-family: "Paperlogie";
+  src: url("/fonts/Paperlogie-4Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Paperlogie";
+  src: url("/fonts/Paperlogie-8ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-container {
+  background: #fff;
+  padding: 64px;
+  border-radius: 24px;
+  max-width: 1200px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  font-family: "Paperlogie", Helvetica, sans-serif;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+.modal-header h2 {
+  font-size: 48px;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.2;
+  color: #000;
+}
+
+.modal-close {
+  font-size: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+}
+
+.modal-description {
+  font-size: 24px;
+  font-weight: 400;
+  color: #222;
+  margin-bottom: 48px;
+  line-height: 1.6;
+}
+
+.modal-content {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.modal-content::-webkit-scrollbar {
+  display: none;
+}
+
+.modal-scroll-track {
+  display: flex;
+  gap: 24px;
+  /* 고정 높이 없이, 자식 비율로 결정 */
+  padding-bottom: 8px;
+}
+
+.modal-scroll-track a {
+  display: block;
+  width: 192px;            /* ← 기존 320px 에서 20% 축소 */
+  aspect-ratio: 16 / 9;     /* 16:9 비율 고정 */
+  flex-shrink: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease;
+}
+.modal-scroll-track a:hover {
+  transform: scale(1.035);
+}
+
+.modal-scroll-track img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* ← cover 가 아닌 contain */
+  background-color: #000;   /* ← 검정 여백 채우기 */
+}
