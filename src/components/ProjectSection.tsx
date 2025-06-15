@@ -133,27 +133,38 @@ export default function ProjectSection() {
           onClose={() => setSelected(null)}
         >
           {selected.type === "youtube" &&
-            selected.items.map((id) => (
-              <a key={id} href={`https://youtube.com/watch?v=${id}`} target="_blank">
-            <img
-           src={`https://img.youtube.com/vi/${id}/hqdefault.jpg`}
-          alt="유튜브 썸네일"
-        style={{ width: "200px", borderRadius: "8px", marginRight: "8px" }}
-      />
-    </a>
-))}
-
-{selected.type === "image" &&
-  selected.items.map((item, idx) => (
-    <a key={idx} href={item.link} target="_blank">
-      <img
-        src={item.src}
-        alt={`map${idx + 1}`}
-        style={{ width: "200px", borderRadius: "8px", marginRight: "8px" }}
-      />
-    </a>
-))}
-        </Modal>
+            // YouTube 분기에서는 items 가 string[] 이므로 타입 단언
+            (selected.items as string[]).map((id) => (
+              <a
+                key={id}
+                href={`https://youtube.com/watch?v=${id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={`https://img.youtube.com/vi/${id}/hqdefault.jpg`}
+                  alt="유튜브 썸네일"
+                  style={{ width: "200px", borderRadius: "8px", marginRight: "8px" }}
+                />
+              </a>
+            ))}
+          {selected.type === "image" &&
+            // 이미지 분기에서는 items 가 {src, link}[] 이므로 타입 단언
+            (selected.items as { src: string; link: string }[]).map((item, idx) => (
+              <a
+                key={idx}
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={item.src}
+                  alt={`map${idx + 1}`}
+                  style={{ width: "200px", borderRadius: "8px", marginRight: "8px" }}
+                />
+              </a>
+            ))}
+       </Modal>
       )}
     </section>
   );
