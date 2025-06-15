@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Modal from "../components/popup/Modal";
-import "../components/Popup/Modal.css";
+import "../components/popup/Modal.css";
 import "../style/ProjectSection.css";
 
 const images = [
